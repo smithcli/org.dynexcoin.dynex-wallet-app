@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>org.dynexcoin.dynex-wallet-app</id>
+  <metadata_license>MIT</metadata_license>
+  <name>Dynex Wallet</name>
+  <developer_name>Dynexcoin</developer_name>
+  <url type="homepage">https://dynexcoin.org/</url>
+  <summary>Visual Studio Code. Code editing. Redefined.</summary>
+  <description>
+    <p>With the Dynex Wallet App users can use the Dynex wallet functionality to create wallets, send and receive DNX and manage transactions and recipients. It is not necessary to run a separate Dynex node, everything is built into the GUI wallet.</p>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://dynexcoin.org/wp-content/uploads/2023/01/dynexwallet.png</image>
+      <caption>Dynex Wallet App overview screenshot</caption>
+    </screenshot>
+  </screenshots>
+  <launchable type="desktop-id">org.dynexcoin.dynex-wallet-app.desktop</launchable>
+  <content_rating type="oars-1.1">
+    <content_attribute id="social-info">moderate</content_attribute>
+  </content_rating>
+  <releases>
+    <release version="2.2.2" date="2023-02-20"/>
+  </releases>
+</component>

@@ -1,0 +1,79 @@
+app-id: org.dynexcoin.dynex-wallet-app
+default-branch: stable
+runtime: org.kde.Platform
+runtime-version: '5.15-22.08'
+sdk: org.kde.Sdk
+command: dynexwallet
+separate-locales: false
+finish-args:
+  # Share
+  - --share=network
+  - --share=ipc
+  # Socket
+  - --socket=wayland
+  - --socket=fallback-x11
+  # Device
+  # Allow
+  # Filesystem
+  - --filesystem=home
+  # Persistent
+  #- --persist=.vscode
+  # Environment
+  #- --env=NPM_CONFIG_GLOBALCONFIG=/app/etc/npmrc
+  # System Bus
+  # Session bus
+  #- --talk-name=org.freedesktop.secrets
+  # Portals
+modules:
+  #- shared-modules/libsecret/libsecret.json
+
+  #- name: libboost
+  #  buildsystem: simple
+  #  build-commands:
+  #    - ./bootstrap.sh --prefix=/app --with-libraries=system
+  #    - ./b2 -j $FLATPAK_BUILDER_N_JOBS install
+  #  sources:
+  #    - type: archive
+  #      url: https://boostorg.jfrog.io/artifactory/main/release/1.81.0/source/boost_1_81_0.tar.bz2
+  #      sha256: 71feeed900fbccca04a3b4f2f84a7c217186f28a940ed8b7ed4725986baf99fa
+
+  #- name: libcurl
+  #  buildsystem: simple
+  #  build-commands:
+  #    - ./bootstrap.sh --prefix=/app --with-libraries=system
+  #    - ./b2 -j $FLATPAK_BUILDER_N_JOBS install
+  #  sources:
+  #    - type: archive
+  #      url: https://boostorg.jfrog.io/artifactory/main/release/1.81.0/source/boost_1_81_0.tar.bz2
+  #      sha256: 71feeed900fbccca04a3b4f2f84a7c217186f28a940ed8b7ed4725986baf99fa
+
+  - name: dynex-wallet-app
+    buildsystem: simple
+    build-commands:
+      - ls -la
+      - install -Dm644 dynex_64.png /app/share/icons/hicolor/64x64/apps/org.dynexcoin.dynex-wallet-app.png
+      - install -Dm644 dynex_128.png /app/share/icons/hicolor/128x128/apps/org.dynexcoin.dynex-wallet-app.png
+      - install -Dm644 dynex_256.png /app/share/icons/hicolor/256x256/apps/org.dynexcoin.dynex-wallet-app.png
+      - install -Dm644 dynex_512.png /app/share/icons/hicolor/512x512/apps/org.dynexcoin.dynex-wallet-app.png
+      - install -Dm644 org.dynexcoin.dynex-wallet-app.metainfo.xml -t /app/share/metainfo
+      - install -Dm644 org.dynexcoin.dynex-wallet-app.desktop -t /app/share/applications
+      - tar -xJf dynexwalletgui_222_ubuntu2204.tar.xz
+      - install -Dm755 dynexwallet /app/bin/dynexwallet
+    cleanup:
+      - 'dynexwalletgui_222_ubuntu2204.tar.xz'
+    sources:
+      - type: file
+        path: org.dynexcoin.dynex-wallet-app.metainfo.xml
+      - type: file
+        path: org.dynexcoin.dynex-wallet-app.desktop
+      - type: file
+        path: icons/dynex_64.png
+      - type: file
+        path: icons/dynex_128.png
+      - type: file
+        path: icons/dynex_256.png
+      - type: file
+        path: icons/dynex_512.png
+      - type: file
+        url: https://github.com/dynexcoin/Dynex-Wallet-App/releases/download/Dynex-Wallet-App/dynexwalletgui_222_ubuntu2204.tar.xz
+        sha256: 2493360736854d68dbcf2b5fc1a341475b811ee7f46b72c6524ea61ab34711be
