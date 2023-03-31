@@ -13,44 +13,30 @@ finish-args:
   - --socket=wayland
   - --socket=fallback-x11
   # Device
+  - --device=dri
   # Allow
   # Filesystem
   - --filesystem=home
   # Persistent
-  #- --persist=.vscode
   # Environment
-  #- --env=NPM_CONFIG_GLOBALCONFIG=/app/etc/npmrc
   # System Bus
+  - --talk-name=org.freedesktop.Flatpak
   # Session bus
-  #- --talk-name=org.freedesktop.secrets
   # Portals
 modules:
-  #- shared-modules/libsecret/libsecret.json
-
-  #- name: libboost
-  #  buildsystem: simple
-  #  build-commands:
-  #    - ./bootstrap.sh --prefix=/app --with-libraries=system
-  #    - ./b2 -j $FLATPAK_BUILDER_N_JOBS install
-  #  sources:
-  #    - type: archive
-  #      url: https://boostorg.jfrog.io/artifactory/main/release/1.81.0/source/boost_1_81_0.tar.bz2
-  #      sha256: 71feeed900fbccca04a3b4f2f84a7c217186f28a940ed8b7ed4725986baf99fa
-
-  #- name: libcurl
-  #  buildsystem: simple
-  #  build-commands:
-  #    - ./bootstrap.sh --prefix=/app --with-libraries=system
-  #    - ./b2 -j $FLATPAK_BUILDER_N_JOBS install
-  #  sources:
-  #    - type: archive
-  #      url: https://boostorg.jfrog.io/artifactory/main/release/1.81.0/source/boost_1_81_0.tar.bz2
-  #      sha256: 71feeed900fbccca04a3b4f2f84a7c217186f28a940ed8b7ed4725986baf99fa
+  - name: libboost
+    buildsystem: simple
+    build-commands:
+      - ./bootstrap.sh --prefix=/app --with-libraries=system
+      - ./b2 -j $FLATPAK_BUILDER_N_JOBS install
+    sources:
+      - type: archive
+        url: https://boostorg.jfrog.io/artifactory/main/release/1.81.0/source/boost_1_81_0.tar.bz2
+        sha256: 71feeed900fbccca04a3b4f2f84a7c217186f28a940ed8b7ed4725986baf99fa
 
   - name: dynex-wallet-app
     buildsystem: simple
     build-commands:
-      - ls -la
       - install -Dm644 dynex_64.png /app/share/icons/hicolor/64x64/apps/org.dynexcoin.dynex-wallet-app.png
       - install -Dm644 dynex_128.png /app/share/icons/hicolor/128x128/apps/org.dynexcoin.dynex-wallet-app.png
       - install -Dm644 dynex_256.png /app/share/icons/hicolor/256x256/apps/org.dynexcoin.dynex-wallet-app.png

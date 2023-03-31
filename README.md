@@ -1,6 +1,8 @@
-# Unoffical Dynex Wallet flatpak
+# Unofficial Dynex Wallet flatpak
 
 WARNING! Still under development.
+
+This is an unofficial [Flatpak](https://flatpak.org/) distribution of the [Dynex Wallet App](https://github.com/dynexcoin/Dynex-Wallet-App/tree/main)
 
 ## Build, Install and Run Flatpak (locally)
 
